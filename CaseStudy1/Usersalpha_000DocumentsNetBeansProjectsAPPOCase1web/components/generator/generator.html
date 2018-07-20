@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="text-center">
+        <h3><img src="img/shell.jpg" width="50" height="50" />Products</h3>
+    </div>
+    <form name="generatorForm">
+        <div class="panel bord">
+            <div class="panel-heading xsmall panel-black text-center">
+                Choose Vendor, Product and Qty
+            </div>
+            <div class="panel-body" style="padding-bottom:80px;">
+                <div class="col-xs-2 col-lg-2 xsmall">Vendor:</div>
+                <div class="col-xs-4 col-lg-2 text-left">
+                    <select ng-model="generator.vendor.vendorNo" ng-options="p.vendorNo as p.vendorNo for p in generator.vendors" ng-change="generator.selectVen(generator.vendor.vendorNo)"></select>
+                </div>
+
+                <div class="col-xs-2 col-lg-2 pull-left xsmall" ng-show="generator.pickedVendor">Product:</div>
+                <div class="col-xs-4 col-lg-5 text-left">
+                    <select ng-model="generator.product" ng-options="p as p.productName for p in generator.products" ng-show="generator.pickedVendor"></select>
+                </div>
+
+                <div ng-show="generator.pickedVendor" class="top10pad" style="margin-top:40px;">
+                    <div class="col-xs-2 col-lg-2 text-left xsmall">Qty:</div>
+                    <div class="col-xs-4 col-lg-2 text-left">
+                        <select class="input-small" ng-model="generator.quantity">
+                            <option value="EOQ" ng-click="">EOQ</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-3 col-lg-1" style="position: relative; bottom:8px;">
+                        <button class="btn btn-xsmall btn-default" ng-click="generator.addItem()">Add</button>
+                    </div>
+                </div>
+                <div class="panel-body xsmall" ng-show="generator.isAddClick">
+                    <div class="text-center col-lg-12 col-sm-12 col-xs-12 panel panel-heading rowRed"
+                         style="position:relative; top:20px;">
+                        <div class="col-lg-4 col-sm-4 col-xs-4 text-left">Product</div>
+                        <div class="col-lg-4 col-sm-4 col-xs-4 text-left">Quantity</div>
+                        <div class="col-lg-4 col-sm-4 col-xs-4 text-left">Extended</div>
+                    </div>
+                    <div style="position:relative; padding-top:-20px;" id="list">
+                        <div class="col-lg-12 col-sm-12 col-xs-12" ng-repeat="gen in generator.genItems"
+                             ng-class="{rowLightishRed: $odd, rowWhite: $even}">
+                            <div class="col-lg-4 col-sm-4 col-xs-4 text-left">{{gen.productname}}</div>
+                            <div class="col-lg-4 col-sm-4 col-xs-4 text-left">{{gen.qty}}</div>
+                            <div class="col-lg-4 col-sm-4 col-xs-4 text-left">{{(gen.ext) | currency : '$' : 2}}</div>
+                        </div>
+
+                        <div class="col-lg-8 col-sm-8 col-xs-8 text-right">Sub:</div>
+                        <div class="col-lg-4 col-sm-4 col-xs-4 text-left">${{generator.sub}}</div>
+                        <div class="col-lg-8 col-sm-8 col-xs-8 text-right rowLightishRed">Tax:</div>
+                        <div class="col-lg-4 col-sm-4 col-xs-4 text-left rowLightishRed">${{generator.tax}}</div>
+                        <div class="col-lg-8 col-sm-8 col-xs-8 text-right">Total:</div>
+                        <div class="col-lg-4 col-sm-4 col-xs-4 text-left">${{generator.total}}</div>
+
+                        <div class="col-lg-3 col-sm-3 col-xs-2">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-sm-12 col-xs-12 text-center label label-default"
+                     style="bottom:-70px; position:relative; font-size:small;">
+                    {{generator.status}}
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-12 text-center" ng-show="generator.isAddClick" style="position: relative; top:10px;">
+                <button class="btn btn-xsmall btn-default" ng-click="generator.createPO()">Add PO</button>
+            </div>
+            <div class="col-xs-12 col-lg-12 text-center" ng-show="generator.isPOClick" style="position: relative; top:10px;">
+                <button class="btn btn-xsmall btn-default" ng-click="generator.viewPdf()">PDF</button>
+            </div>
+        </div>
+    </form>
+</div>

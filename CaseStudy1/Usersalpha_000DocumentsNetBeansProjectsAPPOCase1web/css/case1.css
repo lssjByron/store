@@ -1,0 +1,13 @@
+.rowLightishRed {background-color: pink;}
+.rowWhite {background-color: white;}
+.rowBlack {background-color: black; color:red;}
+.rowRed {background-color: #8A0707; font-weight:bold;}
+.panel-black {background-color: black; color: white;}
+.itemSelected {font-weight:bold; font-size: 14px; color:black; background-color:yellow;}
+.custom-error { font-size: x-small; font-weight:bold; color:red; text-align:left;}
+.snap-content {
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+}
+.bord {border:solid;}
+.top10pad{margin-top:10px;}

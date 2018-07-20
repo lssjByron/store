@@ -1,0 +1,132 @@
+﻿<div class="modal-header text-center">
+    <button type="button" class="close" ng-click="ctrlr.cancel()">&times;</button>
+    <h4 class="modal-title">{{ctrlr.modalTitle}}</h4>
+</div>
+<form name="productForm">
+    <div class="panel bord">
+        <div class="panel-heading xsmall panel-black text-center">
+            Product Information
+            <button type="button" class="pull-right panel-black" ng-click="isCollapsed = !isCollapsed;">
+                <span ng-show="isCollapsed" class="glyphicon glyphicon-chevron-right"></span>
+                <span ng-show="!isCollapsed" class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+        </div>
+        <div class="panel-body xsmall" ng-class="{true: 'collapse'}[isCollapsed]">
+            <div class="col-xs-3 col-lg-6 text-right lblinp">Vendor:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <select required ng-model="ctrlr.product.vendorNo" ng-options="p.vendorNo as p.vendorNo for p in ctrlr.vendors"></select>
+            </div>
+            <div ng-messages="productForm.vendorno.$error">
+                <div ng-message="required" class="col-xs-12 custom-error">Vendor Number is required</div>
+            </div>
+
+            <div class="col-xs-3 col-lg-6 text-right lblinp">Code:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <span ng-hide="ctrlr.todo === 'update'">
+                    <input required type="text" ng-model="ctrlr.product.productCode" name="productcode" />
+                </span>
+                <span ng-hide="ctrlr.todo === 'add'">
+                    <label style="width:300px; height:20px;" name="productcode">{{ctrlr.product.productCode}}</label>
+                </span>
+            </div>
+            <div ng-messages="productForm.productcode.$error">
+                <div ng-message="required" class="col-xs-11 col-xs-12 custom-error">Code is required</div>
+            </div>
+
+            <div class="col-xs-3 col-lg-6 text-right lblinp">Vendor SKU:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <input class="lblinp" required type="text" ng-model="ctrlr.product.vendorSku" name="vendorsku" />
+            </div>
+            <div ng-messages="productForm.vendorsku.$error">
+                <div ng-message="required" class="col-xs-12 custom-error">Sku is required</div>
+            </div>
+
+            <div class="col-xs-12 col-lg-12"></div>
+            <div class=" col-xs-3 col-lg-6 text-right lblinp">Name:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <input class="lblinp" required type="text" ng-model="ctrlr.product.productName" name="productname" />
+            </div>
+            <div ng-messages="productForm.productname.$error">
+                <div ng-message="required" class="col-xs-12 custom-error">Product Name is required</div>
+            </div>
+
+            <div class="col-xs-3 col-lg-6 text-right lblinp">Cost:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <input class="lblinp" required type="text" ng-model="ctrlr.product.costPrice" name="costprice" />
+            </div>
+            <div ng-messages="productForm.costprice.$error">
+                <div ng-message="required" class="col-xs-12 custom-error">Cost is required</div>
+            </div>
+
+            <div class="col-xs-3 col-lg-6 text-right lblinp">MSRP:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <input class="lblinp" required type="text" ng-model="ctrlr.product.MSRP" name="msrp" />
+            </div>
+            <div ng-messages="productForm.msrp.$error">
+                <div ng-message="required" class="col-xs-11 col-xs-12 custom-error">MSRP required</div>
+            </div>
+        </div>
+        <div class="panel-heading xsmall panel-black text-center">
+            Product Information
+            <button type="button" class="pull-right panel-black" ng-click="isMinused = !isMinused;">
+                <span ng-show="isMinused" class="glyphicon glyphicon-chevron-right"></span>
+                <span ng-show="!isMinused" class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+        </div>
+        <div class="panel-body xsmall" ng-class="{true: 'collapse'}[isMinused]">
+            <div class="col-xs-3 col-lg-6 text-right lblinp">ROP:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <input class="lblinp" required type="text" ng-model="ctrlr.product.ROP" name="rop" />
+            </div>
+            <div ng-messages="productForm.rop.$error">
+                <div ng-message="required" class="col-xs-11 col-xs-12 custom-error">ROP required</div>
+            </div>
+            <div class="col-xs-3 col-lg-6 text-right lblinp">EOQ:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <input class="lblinp" required type="text" ng-model="ctrlr.product.EOQ" name="eoq" />
+            </div>
+            <div ng-messages="productForm.eoq.$error">
+                <div ng-message="required" class="col-xs-11 col-xs-12 custom-error">EOQ required</div>
+            </div>
+            <div class="col-xs-3 col-lg-6 text-right lblinp">QOH:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <input class="lblinp" required type="text" ng-model="ctrlr.product.QOH" name="qoh" />
+            </div>
+            <div ng-messages="productForm.qoh.$error">
+                <div ng-message="required" class="col-xs-11 col-xs-12 custom-error">QOH required</div>
+            </div>
+            <div class="col-xs-3 col-lg-6 text-right lblinp">QOO:</div>
+            <div class="col-xs-8 col-lg-6 text-left">
+                <input class="lblinp" required type="text" ng-model="ctrlr.product.QOO" name="qoo" />
+            </div>
+            <div ng-messages="productForm.qoo.$error">
+                <div ng-message="required" class="col-xs-11 col-xs-12 custom-error">QOO required</div>
+            </div>
+        </div>
+            <!--<div class="col-xs-3 col-lg-6 text-right">Title:</div>
+             <div class="col-xs-8 col-lg-6 text-left">{{ctrlr.employee.title}}</div>
+             <div class="col-xs-3 col-lg-6 text-right">First:</div>
+             <div class="col-xs-8 col-lg-6 text-left">{{ctrlr.employee.firstname}}</div>
+             <div class="col-xs-3 col-lg-6 text-right">Last:</div>
+             <div class="col-xs-8 col-lg-6 text-left">{{ctrlr.employee.lastname}}</div>
+             <div class="col-xs-3 col-lg-6 text-right">Phone:</div>
+             <div class="col-xs-8 col-lg-6 text-left">{{ctrlr.employee.phoneno}}</div>
+             <div class="col-xs-3 col-lg-6 text-right">Email:</div>
+             <div class="col-xs-8 col-lg-6 text-left">{{ctrlr.employee.email}}</div>-->
+        
+    </div>
+    <div class="modal-footer top10pad">
+        <img style="float:left" src="img/shell.jpg" width="50" height="50" />
+        <div class="col-xs-12 text-right">
+            <button type="button" class="btn panel-black"
+                    ng-click="(ctrlr.todo === 'add') ? ctrlr.add() : ctrlr.update()"
+                    ng-disabled="productForm.$invalid">
+                {{ctrlr.todo}}
+            </button>
+            <span ng-hide="ctrlr.todo === 'add'">
+                <button type="button" class="btn panel-black" ng-click="ctrlr.delete()" confirm-click>delete</button>
+            </span>
+            <button type="button" class="btn btn-default" ng-click="ctrlr.cancel()">cancel</button>
+        </div>
+    </div>
+</form>

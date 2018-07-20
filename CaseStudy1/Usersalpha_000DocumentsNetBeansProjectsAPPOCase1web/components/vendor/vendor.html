@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="text-center">
+        
+        <h3><img src="img/shell.jpg" width="50" height="50" />Vendors</h3>
+    </div>
+    <div class="text-center col-lg-12 col-sm-12 col-xs-12 panel panel-heading rowRed"
+         style="position:relative; top:20px;">
+        <div class="col-lg-1 col-sm-1 col-xs-1 text-left"
+             ng-click="predicate = 'vendorNo';reverse=!reverse;vendor.findSelected(predicate, reverse);">#</div>
+        <div class="col-lg-1 col-sm-2 col-xs-2 text-left"
+             ng-click="predicate = 'name';reverse=!reverse;vendor.findSelected(predicate, reverse);">Name</div>
+        <div class="col-lg-4 col-sm-4 col-xs-4 text-left"
+             ng-click="predicate = 'city';reverse=!reverse;vendor.findSelected(predicate, reverse);">City</div>
+        <div class="col-lg-4 col-sm-4 col-xs-4 text-left"
+             ng-click="predicate = 'vendorType';reverse=!reverse;vendor.findSelected(predicate, reverse);">Type</div>
+    </div>
+    <div style="position:relative; padding-top:-20px;" id="list">
+        <div class="rowBlack col-lg-12 col-sm-12 col-xs-12" ng-click="vendor.selectRow(-1, null)">
+            ...Click to add, else click on desired vendor
+        </div>
+        <div class="col-lg-12 col-sm-12 col-xs-12" ng-repeat="ven in vendor.vendors"
+             ng-class="{rowLightishRed: $odd, rowWhite: $even, itemSelected: $index === vendor.selectedRow}"
+             ng-click="vendor.selectRow($index, ven)">
+            <div class="col-lg-1 col-sm-1 col-xs-1 text-left">{{ven.vendorNo}}</div>
+            <div class="col-lg-1 col-sm-4 col-xs-2 text-center">{{ven.name}}</div>
+            <div class="col-lg-4 col-sm-4 col-xs-4 text-left">{{ven.city}}</div>
+            <div class="col-lg-4 col-sm-4 col-xs-4 text-left">{{ven.vendorType}}</div>
+        </div>
+        <div class="col-lg-3 col-sm-3 col-xs-2">&nbsp;</div>
+        <div class="col-lg-6 col-sm-6 col-xs-8 text-center label label-default"
+             style="bottom:-50px; position:relative; font-size:small;">
+            {{vendor.status}}
+        </div>
+    </div>
+</div>
